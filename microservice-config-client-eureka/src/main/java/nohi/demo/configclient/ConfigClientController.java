@@ -1,4 +1,8 @@
-package nohi.demo.configclient.web;
+package nohi.demo.configclient;
+
+/**
+ * Created by nohi on 2018/5/18.
+ */
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -7,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 这边的@RefreshScope注解不能少，否则即使调用/refresh，配置也不会刷新
+ * @author eacdy
  */
 @RestController
 @RefreshScope

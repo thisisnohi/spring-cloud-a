@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * 使用@FeignClient("microservice-provider-user")注解绑定microserv
- * ice-provider-user服务，还可以使用url参数指定一个URL。
- *
+ * 使用@FeignClient("microservice-provider-user")注解绑定microservice-provider-user服务，还可以使用url参数指定一个URL。
  * @author eacdy
  */
 @FeignClient(name = "microservice-provider-user",fallback = UserFeignHystrixClient.HystrixClientFallback.class)
@@ -27,8 +25,6 @@ public interface UserFeignHystrixClient {
 	/**
 	 * 这边采取了和Spring Cloud官方文档相同的做法，将fallback类作为内部类
 	 * 放入Feign的接口中，当然也可以单独写一个fallback类。
-	 *
-	 * @author eacdy
 	 */
 	@Component
 	static class HystrixClientFallback implements UserFeignHystrixClient {
@@ -36,7 +32,6 @@ public interface UserFeignHystrixClient {
 
 		/**
 		 * hystrix fallback方法
-		 *
 		 * @param id id
 		 * @return 默认的用户
 		 */

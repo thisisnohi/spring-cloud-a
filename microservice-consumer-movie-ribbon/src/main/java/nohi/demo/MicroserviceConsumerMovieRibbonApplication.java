@@ -10,6 +10,10 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 public class MicroserviceConsumerMovieRibbonApplication {
+	/**
+	 * 实例化RestTemplate，通过@LoadBalanced注解开启均衡负载能力.
+	 * @return restTemplate
+	 */
 	@Bean
 	@LoadBalanced
 	public RestTemplate restTemplate() {

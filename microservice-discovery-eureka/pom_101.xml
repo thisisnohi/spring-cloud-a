@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>nohi.demo</groupId>
+	<artifactId>microservice-discovery-eureka</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>microservice-discovery-eureka</name>
+	<description>Demo project for Spring Boot</description>
+
+	<parent>
+		<groupId>nohi.demo</groupId>
+		<artifactId>spring-cloud-a</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>microservice-discovery-eureka</finalName>
+		<plugins>
+			<!-- docker的maven插件，官网：https://github.com/spotify/docker-maven-plugin -->
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.12</version>
+				<configuration>
+					<!-- 路径为：私有仓库地址/你想要的镜像路径 -->
+					<imageName>reg.nohi.com/test-pull-registry</imageName>
+					<dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+					<!-- 与maven配置文件settings.xml一致 -->
+					<serverId>nohi-registry</serverId>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+<!-- dkuser 密码 {VjGilzyQueMHMx/ds7cLL655bGZxZqII5/YNmdbyMBo=} -->

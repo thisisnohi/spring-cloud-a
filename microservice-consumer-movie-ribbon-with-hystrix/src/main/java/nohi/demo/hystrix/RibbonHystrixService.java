@@ -19,7 +19,6 @@ public class RibbonHystrixService {
 
 	/**
 	 * 使用@HystrixCommand注解指定当该方法发生异常时调用的方法
-	 *
 	 * @param id id
 	 * @return 通过id查询到的用户
 	 */
@@ -30,7 +29,6 @@ public class RibbonHystrixService {
 
 	/**
 	 * hystrix fallback方法
-	 *
 	 * @param id id
 	 * @return 默认的用户
 	 */
